@@ -19,7 +19,7 @@ export default defineNuxtConfig({
           content:
             "Servidor Minecraft da Bolha Dev com whitelist, eventos e comunidade escolhida a dedo.",
         },
-        { property: "og:image", content: "/assets/background.jpeg" },
+        { property: "og:image", content: "/assets/background.png" },
       ],
       link: [{ rel: "icon", href: "/favicon.ico" }],
     },

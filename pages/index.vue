@@ -127,9 +127,9 @@ async function joinWaitlist() {
       <header
         class="site-header absolute inset-x-0 top-0 z-20 mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-6"
       >
-        <a href="#top" class="brand-mark text-sm uppercase md:text-base"
-          >Bolha Realm</a
-        >
+        <a href="#top" class="brand-mark" aria-label="Bolha Realm">
+          <img src="/assets/logo.png" alt="Bolha Realm" class="brand-logo" />
+        </a>
 
         <nav
           class="hidden items-center gap-5 text-xs uppercase text-white/80 lg:flex"
@@ -143,7 +143,7 @@ async function joinWaitlist() {
           href="#waitlist"
           class="pixel-button pixel-button--arrow pixel-button--small"
         >
-          Stay tuned
+          Entrar na lista
           <ArrowRight class="h-4 w-4" />
         </a>
       </header>
@@ -155,7 +155,7 @@ async function joinWaitlist() {
           v-motion
           :initial="{ opacity: 0, y: 24 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 650 } }"
-          class="max-w-4xl"
+          class="max-w-3xl"
         >
           <div class="status-chip mb-5 text-xs uppercase md:text-sm">
             <span class="status-dot" />
@@ -165,7 +165,7 @@ async function joinWaitlist() {
           <h1 class="hero-title uppercase">Bolha Realm</h1>
 
           <p
-            class="mt-6 max-w-2xl text-base leading-8 text-white/86 md:text-xl md:leading-9"
+            class="mt-6 max-w-xl text-base leading-8 text-white/86 md:text-xl md:leading-9"
           >
             O servidor Minecraft da Bolha Dev: survival cooperativo, eventos com
             a galera e uma lista de espera para escolher quem entra nessa
@@ -177,22 +177,24 @@ async function joinWaitlist() {
               Entrar na lista
               <ArrowRight class="h-5 w-5" />
             </a>
-            <a href="#realm" class="pixel-button pixel-button--stone"
-              >Conhecer o realm</a
+            <a
+              href="#realm"
+              class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.16em] text-white/68 transition hover:text-white"
             >
+              Conhecer o realm
+              <ArrowRight class="h-4 w-4" />
+            </a>
           </div>
 
-          <div class="mt-10 hidden grid-cols-3 gap-3 md:grid md:max-w-3xl">
-            <div
-              v-for="stat in stats"
-              :key="stat.label"
-              class="minecraft-panel px-4 py-4"
-            >
-              <p class="text-[0.68rem] uppercase text-torch">
-                {{ stat.label }}
-              </p>
-              <p class="mt-2 text-lg uppercase text-white">{{ stat.value }}</p>
-            </div>
+          <div
+            class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-[0.16em] text-white/58"
+          >
+            <template v-for="(stat, index) in stats" :key="stat.label">
+              <span class="text-torch">{{ stat.value }}</span>
+              <span v-if="index < stats.length - 1" class="text-white/28"
+                >|</span
+              >
+            </template>
           </div>
         </div>
       </div>
@@ -342,10 +344,6 @@ async function joinWaitlist() {
               <MessageSquareText class="h-4 w-4 text-info" />
               Convite pelo Discord
             </div>
-            <div class="pixel-badge text-xs uppercase">
-              <CheckCircle2 class="h-4 w-4 text-torch" />
-              Selecao manual
-            </div>
           </div>
         </div>
 
@@ -445,7 +443,12 @@ async function joinWaitlist() {
       <div
         class="mx-auto flex max-w-7xl flex-col gap-4 text-xs uppercase text-white/58 md:flex-row md:items-center md:justify-between"
       >
-        <p>Bolha Realm - Servidor Minecraft da Bolha Dev</p>
+        <div class="footer-brand">
+          <img src="/assets/logo.png" alt="Bolha Realm" class="footer-logo" />
+          <p class="text-[0.72rem] tracking-[0.16em] text-white/48">
+            Servidor Minecraft da Bolha Dev
+          </p>
+        </div>
         <a class="text-torch transition hover:text-white" href="#top"
           >Voltar ao topo</a
         >

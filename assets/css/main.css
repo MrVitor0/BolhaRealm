@@ -46,7 +46,7 @@
 @layer components {
   .hero-scene {
     position: relative;
-    background-image: linear-gradient(90deg, rgb(12 10 7 / 0.78) 0%, rgb(12 10 7 / 0.42) 48%, rgb(12 10 7 / 0.2) 100%), url('/assets/background.jpeg');
+    background-image: linear-gradient(90deg, rgb(12 10 7 / 0.78) 0%, rgb(12 10 7 / 0.42) 48%, rgb(12 10 7 / 0.2) 100%), url('/assets/background.png');
     background-position: center top;
     background-size: cover;
   }
@@ -70,14 +70,14 @@
   .brand-mark {
     display: inline-flex;
     align-items: center;
-    min-height: 48px;
-    border: 1px solid rgb(255 247 220 / 0.15);
-    background: linear-gradient(180deg, rgb(32 27 20 / 0.92), rgb(15 12 9 / 0.92));
-    padding: 0.75rem 1rem;
-    color: #fff7dc;
-    font-family: 'Minecraft', ui-monospace, SFMono-Regular, Menlo, monospace;
-    text-shadow: 2px 2px 0 #0f0b08;
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 12px 24px rgb(0 0 0 / 0.24);
+    flex-shrink: 0;
+  }
+
+  .brand-logo {
+    display: block;
+    width: auto;
+    height: 4.2rem;
+    filter: drop-shadow(0 8px 18px rgb(0 0 0 / 0.28));
   }
 
   .hero-title {
@@ -93,10 +93,10 @@
   .site-header {
     width: calc(100% - 2.5rem);
     margin-top: 1.25rem;
-    border: 1px solid rgb(255 247 220 / 0.12);
-    background: linear-gradient(180deg, rgb(25 20 15 / 0.82), rgb(15 12 9 / 0.82));
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 14px 30px rgb(0 0 0 / 0.24);
-    backdrop-filter: blur(12px);
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
   }
 
   .nav-link {
@@ -111,6 +111,20 @@
   .nav-link:hover,
   .nav-link:focus-visible {
     color: #fff7dc;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+
+  .footer-logo {
+    display: block;
+    width: min(100%, 12rem);
+    height: auto;
+    filter: drop-shadow(0 8px 16px rgb(0 0 0 / 0.24));
   }
 
   .pixel-button {
@@ -267,6 +281,10 @@
 }
 
 @media (min-width: 768px) {
+  .brand-logo {
+    height: 4.7rem;
+  }
+
   .hero-title {
     font-size: 6rem;
   }
@@ -287,6 +305,10 @@
 }
 
 @media (max-width: 420px) {
+  .brand-logo {
+    height: 3.4rem;
+  }
+
   .hero-title {
     font-size: 3.1rem;
   }
