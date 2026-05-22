@@ -1,3 +1,8 @@
+@import "@fontsource/barlow/400.css";
+@import "@fontsource/barlow/500.css";
+@import "@fontsource/barlow/600.css";
+@import "@fontsource/barlow/700.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -23,8 +28,13 @@
     overflow-x: hidden;
     background: #12100d;
     color: #fff7dc;
-    font-family: 'Minecraft', ui-monospace, SFMono-Regular, Menlo, monospace;
-    letter-spacing: 0;
+    font-family: 'Barlow', 'Trebuchet MS', sans-serif;
+    letter-spacing: 0.01em;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 
   ::selection {
@@ -60,69 +70,115 @@
   .brand-mark {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
-    border: 3px solid #173f17;
-    background: #2d8f25;
-    padding: 0.6rem 0.9rem;
-    color: #fff;
-    text-shadow: 2px 2px 0 #163014;
-    box-shadow: inset 0 4px 0 #57ca49, inset 0 -5px 0 #1b5a1b, 0 5px 0 #0d2b0d;
+    min-height: 48px;
+    border: 1px solid rgb(255 247 220 / 0.15);
+    background: linear-gradient(180deg, rgb(32 27 20 / 0.92), rgb(15 12 9 / 0.92));
+    padding: 0.75rem 1rem;
+    color: #fff7dc;
+    font-family: 'Minecraft', ui-monospace, SFMono-Regular, Menlo, monospace;
+    text-shadow: 2px 2px 0 #0f0b08;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 12px 24px rgb(0 0 0 / 0.24);
   }
 
   .hero-title {
     max-width: 11ch;
     font-size: 3.75rem;
     line-height: 0.9;
-    letter-spacing: 0;
+    letter-spacing: 0.015em;
     color: #fff7dc;
+    font-family: 'Minecraft', ui-monospace, SFMono-Regular, Menlo, monospace;
     text-shadow: 4px 4px 0 #17140f, 8px 8px 0 rgb(0 0 0 / 0.42), 0 0 34px rgb(86 209 75 / 0.32);
   }
 
+  .site-header {
+    width: calc(100% - 2.5rem);
+    margin-top: 1.25rem;
+    border: 1px solid rgb(255 247 220 / 0.12);
+    background: linear-gradient(180deg, rgb(25 20 15 / 0.82), rgb(15 12 9 / 0.82));
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 14px 30px rgb(0 0 0 / 0.24);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-link {
+    position: relative;
+    color: rgb(255 255 255 / 0.72);
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    transition: color 160ms ease;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    color: #fff7dc;
+  }
+
   .pixel-button {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 56px;
+    min-height: 54px;
     gap: 0.7rem;
-    border: 3px solid #0b270b;
+    border: 2px solid #204716;
     border-radius: 2px;
-    background: #348f2a;
-    padding: 0.85rem 1.1rem;
+    background: linear-gradient(180deg, #62b740 0 10%, #4e992c 10% 78%, #3c7820 78% 100%);
+    padding: 0.82rem 1.2rem;
     color: #fff;
     text-align: center;
     text-transform: uppercase;
-    text-shadow: 2px 2px 0 #143513;
-    box-shadow: inset 0 5px 0 #62d653, inset 0 -6px 0 #1d5f1a, 0 7px 0 #0f2e0f, 0 18px 28px rgb(0 0 0 / 0.36);
+    font-family: 'Minecraft', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.84rem;
+    letter-spacing: 0.04em;
+    text-shadow: 2px 2px 0 #204016;
+    box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.18), inset 0 -4px 0 rgb(22 50 15 / 0.5), 0 0 0 1px #71b74a, 0 5px 0 #203b16;
     transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease;
+  }
+
+  .pixel-button::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    top: 2px;
+    height: 2px;
+    background: rgb(255 255 255 / 0.18);
   }
 
   .pixel-button:hover,
   .pixel-button:focus-visible {
-    filter: brightness(1.08);
-    transform: translateY(-2px);
+    filter: brightness(1.05);
+    transform: translateY(-1px);
   }
 
   .pixel-button:active {
-    transform: translateY(4px);
-    box-shadow: inset 0 3px 0 #62d653, inset 0 -4px 0 #1d5f1a, 0 3px 0 #0f2e0f;
+    transform: translateY(2px);
+    box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.16), inset 0 -2px 0 rgb(22 50 15 / 0.38), 0 0 0 1px #71b74a, 0 3px 0 #203b16;
   }
 
   .pixel-button--small {
     min-height: 44px;
-    padding: 0.55rem 0.75rem;
-    font-size: 0.78rem;
+    padding: 0.58rem 0.85rem;
+    font-size: 0.76rem;
+  }
+
+  .pixel-button--arrow {
+    justify-content: space-between;
+    min-width: 12.25rem;
   }
 
   .pixel-button--stone {
-    border-color: #292d2a;
-    background: #595f5b;
-    box-shadow: inset 0 5px 0 #838983, inset 0 -6px 0 #363a37, 0 7px 0 #222522, 0 18px 28px rgb(0 0 0 / 0.3);
+    border-color: #474c47;
+    background: linear-gradient(180deg, #9ca39d 0 10%, #777d77 10% 78%, #5c615c 78% 100%);
+    text-shadow: 2px 2px 0 #2a2d2a;
+    box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.18), inset 0 -4px 0 rgb(29 31 29 / 0.45), 0 0 0 1px #a6aba6, 0 5px 0 #2d322d;
   }
 
   .pixel-button--portal {
-    border-color: #241144;
-    background: #6731c9;
-    box-shadow: inset 0 5px 0 #9f70ff, inset 0 -6px 0 #3f1c80, 0 7px 0 #21103f, 0 18px 28px rgb(0 0 0 / 0.34);
+    border-color: #3f236c;
+    background: linear-gradient(180deg, #9c73f2 0 10%, #7745d6 10% 78%, #5b2faa 78% 100%);
+    text-shadow: 2px 2px 0 #31185f;
+    box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.18), inset 0 -4px 0 rgb(34 17 65 / 0.48), 0 0 0 1px #ab88f1, 0 5px 0 #2c184f;
   }
 
   .status-chip,
@@ -135,6 +191,7 @@
     background: rgb(18 16 13 / 0.7);
     padding: 0.55rem 0.7rem;
     color: #fff7dc;
+    font-weight: 600;
     box-shadow: inset 0 -3px 0 rgb(0 0 0 / 0.3);
   }
 
@@ -175,8 +232,10 @@
     background: #15100b;
     color: #fff7dc;
     box-shadow: inset 0 4px 0 rgb(255 255 255 / 0.05), inset 0 -5px 0 rgb(0 0 0 / 0.38);
-    font-family: 'Minecraft', ui-monospace, monospace;
-    letter-spacing: 0;
+    font-family: 'Barlow', 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
   }
 
   .pixel-field:focus {
@@ -191,8 +250,9 @@
 
   .section-kicker {
     color: #f5b642;
-    text-shadow: 2px 2px 0 #1c1208;
     text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.18em;
   }
 
   .section-title {
@@ -200,7 +260,8 @@
     color: #fff7dc;
     font-size: 2.25rem;
     line-height: 1;
-    letter-spacing: 0;
+    letter-spacing: 0.02em;
+    font-family: 'Minecraft', ui-monospace, SFMono-Regular, Menlo, monospace;
     text-shadow: 3px 3px 0 #17140f;
   }
 }
@@ -232,5 +293,9 @@
 
   .pixel-button {
     width: 100%;
+  }
+
+  .site-header {
+    width: calc(100% - 1.5rem);
   }
 }

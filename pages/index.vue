@@ -125,7 +125,7 @@ async function joinWaitlist() {
       <div class="hero-grid" />
 
       <header
-        class="absolute inset-x-0 top-0 z-20 mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-5 py-5 md:px-8"
+        class="site-header absolute inset-x-0 top-0 z-20 mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-6"
       >
         <a href="#top" class="brand-mark text-sm uppercase md:text-base"
           >Bolha Realm</a
@@ -134,12 +134,15 @@ async function joinWaitlist() {
         <nav
           class="hidden items-center gap-5 text-xs uppercase text-white/80 lg:flex"
         >
-          <a class="transition hover:text-torch" href="#realm">O servidor</a>
-          <a class="transition hover:text-torch" href="#temporada">Temporada</a>
-          <a class="transition hover:text-torch" href="#waitlist">Lista</a>
+          <a class="nav-link" href="#realm">O servidor</a>
+          <a class="nav-link" href="#temporada">Temporada</a>
+          <a class="nav-link" href="#waitlist">Lista</a>
         </nav>
 
-        <a href="#waitlist" class="pixel-button pixel-button--small">
+        <a
+          href="#waitlist"
+          class="pixel-button pixel-button--arrow pixel-button--small"
+        >
           Stay tuned
           <ArrowRight class="h-4 w-4" />
         </a>
@@ -170,7 +173,7 @@ async function joinWaitlist() {
           </p>
 
           <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <a href="#waitlist" class="pixel-button">
+            <a href="#waitlist" class="pixel-button pixel-button--arrow">
               Entrar na lista
               <ArrowRight class="h-5 w-5" />
             </a>
@@ -420,7 +423,7 @@ async function joinWaitlist() {
             </p>
 
             <button
-              class="pixel-button pixel-button--portal"
+              class="pixel-button pixel-button--arrow pixel-button--portal"
               :disabled="isSubmitting"
               type="submit"
             >
