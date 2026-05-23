@@ -165,6 +165,65 @@ const playstyles = [
   "Tech / automacao",
 ];
 
+type PData = [number, number, number, number, string, number, string];
+
+function mkParticles(data: PData[]) {
+  return data.map(([left, bot, delay, dur, color, size, anim], id) => ({
+    id,
+    style: {
+      left: `${left}%`,
+      bottom: `${bot}%`,
+      animationDelay: `${delay}s`,
+      animationDuration: `${dur}s`,
+      background: color,
+      width: `${size}px`,
+      height: `${size}px`,
+      animationName: anim,
+    },
+  }));
+}
+
+const heroParticles = mkParticles([
+  [5, 8, 0, 4.2, "#56d14b", 4, "float-up-a"],
+  [11, 15, 0.6, 3.8, "#f5b642", 3, "float-up-b"],
+  [18, 5, 1.4, 4.6, "#9c73f2", 4, "float-up-c"],
+  [25, 20, 0.2, 3.5, "#56d14b", 3, "float-up-a"],
+  [33, 10, 1.8, 4.0, "#f5b642", 4, "float-up-b"],
+  [40, 18, 0.9, 3.7, "#56d14b", 3, "float-up-c"],
+  [47, 7, 2.3, 5.1, "#9c73f2", 4, "float-up-a"],
+  [54, 22, 0.4, 3.9, "#f5b642", 3, "float-up-b"],
+  [61, 12, 1.6, 4.3, "#56d14b", 4, "float-up-c"],
+  [68, 4, 0.7, 3.6, "#f5b642", 3, "float-up-a"],
+  [75, 16, 2.1, 4.8, "#9c73f2", 4, "float-up-b"],
+  [82, 9, 1.1, 3.4, "#56d14b", 3, "float-up-c"],
+  [88, 24, 0.3, 4.5, "#f5b642", 4, "float-up-a"],
+  [94, 14, 1.9, 3.8, "#56d14b", 3, "float-up-b"],
+  [8, 30, 2.5, 5.0, "#9c73f2", 4, "float-up-c"],
+  [22, 3, 0.8, 4.1, "#f5b642", 3, "float-up-a"],
+  [44, 26, 1.3, 3.9, "#56d14b", 4, "float-up-b"],
+  [72, 19, 2.8, 4.7, "#9c73f2", 3, "float-up-c"],
+]);
+
+const temporadaParticles = mkParticles([
+  [10, 15, 0.5, 4.8, "#9c73f2", 4, "float-up-a"],
+  [28, 8, 1.3, 3.9, "#f5b642", 3, "float-up-b"],
+  [45, 25, 0, 5.2, "#9c73f2", 4, "float-up-c"],
+  [63, 12, 2.1, 4.1, "#f5b642", 3, "float-up-a"],
+  [78, 5, 0.8, 4.6, "#9c73f2", 4, "float-up-b"],
+  [15, 30, 1.9, 3.7, "#f5b642", 3, "float-up-c"],
+  [55, 18, 2.6, 5.0, "#9c73f2", 4, "float-up-a"],
+  [88, 22, 0.3, 4.3, "#f5b642", 3, "float-up-b"],
+]);
+
+const launcherParticles = mkParticles([
+  [8, 12, 0.4, 4.4, "#56d14b", 4, "float-up-a"],
+  [30, 5, 1.7, 3.8, "#f5b642", 3, "float-up-b"],
+  [52, 20, 0.1, 5.0, "#56d14b", 4, "float-up-c"],
+  [70, 9, 2.2, 4.2, "#f5b642", 3, "float-up-a"],
+  [86, 16, 0.9, 3.6, "#56d14b", 4, "float-up-b"],
+  [42, 28, 1.5, 4.8, "#9c73f2", 3, "float-up-c"],
+]);
+
 const videoRef = ref<HTMLVideoElement | null>(null);
 
 onMounted(() => {
@@ -289,6 +348,15 @@ async function joinWaitlist() {
     <section id="top" class="hero-scene flex min-h-[88svh] overflow-hidden">
       <div class="hero-vignette" />
       <div class="hero-grid" />
+      <div class="hero-torch-glow hidden sm:block" aria-hidden="true" />
+      <div class="pixel-particles hidden sm:block" aria-hidden="true">
+        <span
+          v-for="p in heroParticles"
+          :key="p.id"
+          class="pixel-particle"
+          :style="p.style"
+        />
+      </div>
 
       <header
         class="site-header absolute inset-x-0 top-0 z-20 mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-6"
@@ -316,7 +384,7 @@ async function joinWaitlist() {
       </header>
 
       <div
-        class="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-5 pb-12 pt-28 md:px-8 lg:grid-cols-2 lg:gap-16"
+        class="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-5 pb-8 pt-20 md:pb-12 md:pt-28 md:px-8 lg:grid-cols-2 lg:gap-16"
       >
         <div
           v-motion
@@ -342,13 +410,6 @@ async function joinWaitlist() {
             <a href="#waitlist" class="pixel-button pixel-button--arrow">
               Jogar com a gente
               <ArrowRight class="h-5 w-5" />
-            </a>
-            <a
-              href="#realm"
-              class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.16em] text-white/68 transition hover:text-white"
-            >
-              Ver o modpack
-              <ArrowRight class="h-4 w-4" />
             </a>
           </div>
 
@@ -490,6 +551,14 @@ async function joinWaitlist() {
       <div
         class="absolute right-0 top-0 h-full w-full bg-[linear-gradient(135deg,transparent_0%,rgba(123,63,242,0.2)_45%,transparent_72%)]"
       />
+      <div class="pixel-particles hidden sm:block" aria-hidden="true">
+        <span
+          v-for="p in temporadaParticles"
+          :key="p.id"
+          class="pixel-particle"
+          :style="p.style"
+        />
+      </div>
 
       <div
         class="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center"
@@ -553,6 +622,14 @@ async function joinWaitlist() {
       <div
         class="absolute inset-x-0 top-0 h-3 bg-[linear-gradient(90deg,#7b3ff2,#2d8f25,#f5b642,#595f5b)]"
       />
+      <div class="pixel-particles hidden sm:block" aria-hidden="true">
+        <span
+          v-for="p in launcherParticles"
+          :key="p.id"
+          class="pixel-particle"
+          :style="p.style"
+        />
+      </div>
 
       <div
         class="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:items-center"

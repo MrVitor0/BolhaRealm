@@ -65,6 +65,7 @@
     background-size: 32px 32px;
     opacity: 0.18;
     pointer-events: none;
+    animation: grid-drift 20s linear infinite;
   }
 
   .brand-mark {
@@ -215,6 +216,7 @@
     border-radius: 2px;
     background: #56d14b;
     box-shadow: 0 0 18px #56d14b;
+    animation: pixel-pulse 2.2s ease-in-out infinite;
   }
 
   .minecraft-panel {
@@ -320,6 +322,7 @@
     background: #f5b642;
     z-index: 4;
     box-shadow: 0 0 10px rgb(245 182 66 / 0.9), 0 0 22px rgb(245 182 66 / 0.4);
+    animation: corner-glow-pulse 2.8s ease-in-out infinite;
   }
 
   .video-corner--tl { top: -3px; left: -3px; }
@@ -358,6 +361,91 @@
     );
     pointer-events: none;
     z-index: 2;
+  }
+
+  /* ── Pixel particle animations ───────────────────────── */
+  @keyframes float-up-a {
+    0%   { transform: translate(0, 0);          opacity: 0; }
+    12%  {                                       opacity: 0.85; }
+    88%  {                                       opacity: 0.4; }
+    100% { transform: translate(8px, -100px);   opacity: 0; }
+  }
+
+  @keyframes float-up-b {
+    0%   { transform: translate(0, 0);           opacity: 0; }
+    15%  {                                        opacity: 0.65; }
+    85%  {                                        opacity: 0.3; }
+    100% { transform: translate(-10px, -82px);   opacity: 0; }
+  }
+
+  @keyframes float-up-c {
+    0%   { transform: translate(0, 0);           opacity: 0; }
+    10%  {                                        opacity: 1; }
+    90%  {                                        opacity: 0.5; }
+    100% { transform: translate(5px, -118px);    opacity: 0; }
+  }
+
+  @keyframes pixel-pulse {
+    0%, 100% { box-shadow: 0 0 10px #56d14b, 0 0 18px rgb(86 209 75 / 0.5); }
+    50%       { box-shadow: 0 0 22px #56d14b, 0 0 45px #56d14b, 0 0 65px rgb(86 209 75 / 0.28); }
+  }
+
+  @keyframes corner-glow-pulse {
+    0%, 100% { box-shadow: 0 0 10px rgb(245 182 66 / 0.9), 0 0 22px rgb(245 182 66 / 0.4); }
+    50%       { box-shadow: 0 0 22px rgb(245 182 66 / 1), 0 0 48px rgb(245 182 66 / 0.7), 0 0 78px rgb(245 182 66 / 0.22); }
+  }
+
+  @keyframes grid-drift {
+    0%   { background-position: 0px 0px; }
+    100% { background-position: 32px 32px; }
+  }
+
+  @keyframes torch-flicker {
+    0%, 100% { opacity: 0.65; }
+    18%       { opacity: 1; }
+    34%       { opacity: 0.5; }
+    60%       { opacity: 0.88; }
+    80%       { opacity: 0.6; }
+  }
+
+  .pixel-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 2;
+  }
+
+  .pixel-particle {
+    position: absolute;
+    border-radius: 0;
+    image-rendering: pixelated;
+  }
+
+  .hero-torch-glow {
+    position: absolute;
+    top: 4%;
+    right: 18%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgb(245 182 66 / 0.2) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 1;
+    animation: torch-flicker 3.4s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pixel-particle,
+    .hero-torch-glow {
+      animation: none !important;
+      opacity: 0 !important;
+    }
+
+    .status-dot,
+    .video-corner,
+    .hero-grid {
+      animation: none !important;
+    }
   }
 }
 
