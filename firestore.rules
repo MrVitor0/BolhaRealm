@@ -1,0 +1,17 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // A coleção waitlist é escrita exclusivamente pelo Admin SDK (server-side).
+    // Nenhum cliente tem acesso de leitura ou escrita direta.
+    match /waitlist/{entry} {
+      allow read, write: if false;
+    }
+
+    // Nega qualquer outro acesso por padrão.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

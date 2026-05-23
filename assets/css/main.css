@@ -262,6 +262,27 @@
     color: rgb(255 247 220 / 0.48);
   }
 
+  .pixel-field--error {
+    border-color: #e05252 !important;
+    box-shadow:
+      inset 0 4px 0 rgb(255 255 255 / 0.05),
+      inset 0 -5px 0 rgb(0 0 0 / 0.38),
+      0 0 0 3px rgb(224 82 82 / 0.22);
+  }
+
+  .pixel-field--error:focus {
+    border-color: #e05252 !important;
+    outline-color: rgb(224 82 82 / 0.35);
+  }
+
+  .pixel-field--valid {
+    border-color: #56d14b !important;
+    box-shadow:
+      inset 0 4px 0 rgb(255 255 255 / 0.05),
+      inset 0 -5px 0 rgb(0 0 0 / 0.38),
+      0 0 0 3px rgb(86 209 75 / 0.18);
+  }
+
   .section-kicker {
     color: #f5b642;
     text-transform: uppercase;
@@ -277,6 +298,66 @@
     letter-spacing: 0.02em;
     font-family: 'Minecraft', ui-monospace, SFMono-Regular, Menlo, monospace;
     text-shadow: 3px 3px 0 #17140f;
+  }
+
+  /* ── Hero video frame ───────────────────────── */
+  .video-frame-outer {
+    position: relative;
+    padding: 6px;
+    background: #1a1209;
+    box-shadow:
+      0 0 0 4px #292119,
+      0 0 0 8px #1a1209,
+      0 0 80px rgb(86 209 75 / 0.14),
+      0 0 40px rgb(245 182 66 / 0.06),
+      0 32px 80px rgb(0 0 0 / 0.65);
+  }
+
+  .video-corner {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #f5b642;
+    z-index: 4;
+    box-shadow: 0 0 10px rgb(245 182 66 / 0.9), 0 0 22px rgb(245 182 66 / 0.4);
+  }
+
+  .video-corner--tl { top: -3px; left: -3px; }
+  .video-corner--tr { top: -3px; right: -3px; }
+  .video-corner--bl { bottom: -3px; left: -3px; }
+  .video-corner--br { bottom: -3px; right: -3px; }
+
+  .video-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border: 4px solid #2d2117;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow:
+      inset 0 4px 0 rgb(255 255 255 / 0.1),
+      inset 0 -6px 0 rgb(0 0 0 / 0.35);
+  }
+
+  .video-frame video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .video-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgb(0 0 0 / 0.07) 0px,
+      rgb(0 0 0 / 0.07) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+    pointer-events: none;
+    z-index: 2;
   }
 }
 
